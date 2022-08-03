@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server:local": "ws --directory public --port=8888 --static.extensions json"
   },
   "dependencies": {
     "vue": "^3.2.37"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.0",
+    "local-web-server": "^5.2.1",
+    "lws": "^4.1.2",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
     "vue-tsc": "^0.38.4"

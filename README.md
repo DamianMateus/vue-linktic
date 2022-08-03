@@ -1,16 +1,40 @@
-# Vue 3 + TypeScript + Vite
+# Vue.js Frontend Challenge
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Este es el test de Frontend Developer con Vue.js. Tiene un tiempo de hasta 1 día para entregar el test resuelto. Por favor, tome en cuenta el tiempo que se demora en resolver el test ya que es probable se le pregunte. Al completarlo, debe subir el código a un repositorio público de GitHub y compartirlo con la persona que le envió el test. 
 
-## Recommended IDE Setup
+## Info
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+El repositorio contiene una estructura inicial de un proyecto Vite.js. Para iniciar el ambiente de desarrollo en local solo debe correr el siguiente comando:
 
-## Type Support For `.vue` Imports in TS
+```
+npm run dev
+```
+Tambien debe tomar en cuenta que debe correr el API de manera local usando el comando:
+```
+npm run server:local
+```
+Este comando inicializará el API de frutas de manera local y el endpoint que debe consultar estará disponible en la siguiente url:
+```
+http://127.0.0.1:8888/api/fruits
+```
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## Requerimientos
+ - Debe consultar el API de frutas para traerse los datos a mostrar en pantalla
+ - Debe construir el componente desde cero (no use librerias de componentes)
+ - Debe coincidir con el estilo del diseño de Figma 
+ - Debe ser reusable, abierto para la extensión
+ - Luego de completar el test, debe escribir un archivo REPORT.md donde debe argumentar las decisiones que tomó durante el test (ej: librerias implementadas, practicas de desarrollo, etc).
+ - Opcional: se considerara como puntos a favor el uso de test unitarios o de integración
+ 
+## Diseño
+Figma Link: https://www.figma.com/file/iRjstuUhyF17nHJ7sCk040/Dropdown-Test-Design?node-id=0%3A1 (debes iniciar sesion en Figma para inspeccionar el diseño)
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+## Lo que estamos buscando:
+ - Código mantenible y facil de testear
+ - Separacion de responsabilidades
+ - Uso de buenas practicas de desarrollo de software
+ - Observar el uso de CSS y HTML moderno 
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+## Tips
+
+Puede usar una libreria de CSS como TailwindCSS, Bulma o Bootstrap
