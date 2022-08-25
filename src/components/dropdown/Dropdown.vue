@@ -19,16 +19,12 @@
         </div>
       </div>
     </section>
-
-
   </section>
 </template>
 
 <script>
 
 import Icon from '../shared/Icon.vue'
-
-
 
 export default {
   data() {
@@ -122,7 +118,7 @@ section.container.visible {
       border: none;
       font-size: 16px;
       padding-left: 8px;
-      color: #A0AEC0;
+      color: #1A202C;
       padding-top: 10px;
 
       &::placeholder {
@@ -164,4 +160,3 @@ section.container.visible {
   }
 }
 </style>
-
