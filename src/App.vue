@@ -9,6 +9,6 @@ import Dropdown from './components/dropdown/Dropdown.vue'
   <Dropdown></Dropdown>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
