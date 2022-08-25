@@ -4,41 +4,59 @@
   <section class="container">
     <section class="dropdown-wrapper">
       <div @click="isVisible = !isVisible" class="selected-item">
-        <span>Select an item</span>
+        <span v-if="selectedFruit">{{ selectedFruit }}</span>
+        <span v-else>Select an item</span>
         <Icon name="iconDown"></Icon>
       </div>
       <div v-if="isVisible" class="dropdown-open">
         <Icon name="iconUp"></Icon>
-        <input v-model="searchQuery" type="text" placeholder="This is a search input" />
-
-
+        <input type="text" v-model="searchQuery"  placeholder="This is a search input"/>
         <div class="options">
           <ul>
-            <li>apple</li>
-            <li>ginger</li>
-            <li>bread</li>
-            <li>rapsberry</li>
-            <li>fruit</li>
+            <li @click="selectFruit()" v-for="(fruit, index) in filteredFruit" :key="`${index}`"> {{ fruit }}
+            </li>
           </ul>
         </div>
       </div>
     </section>
-
   </section>
-
 </template>
 
 <script>
 
 import Icon from '../shared/Icon.vue'
 
+
+
 export default {
   data() {
     return {
+      fruitsArray: [],
       searchQuery: '',
       selectedItem: null,
       isVisible: false,
     }
+  },
+  computed: {
+    filteredFruit() {
+      return this.fruitsArray.filter((fruit) => {
+        return fruit.match(this.searchQuery);
+      })
+    }
+  },
+  methods: {
+    selectFruit(fruit) {
+      this.selectedItem = fruit;
+      this.isVisible = false;
+    },
+  },
+
+  mounted() {
+    fetch('http://127.0.0.1:8888/api/fruits')
+      .then(res => res.json())
+      .then(json => {
+        this.fruitsArray = json.data.fruits
+      })
   },
   components: {
     Icon
@@ -91,9 +109,11 @@ export default {
       font-size: 16px;
       padding-left: 8px;
       color: #A0AEC0;
+
       &::placeholder {
         color: #A0AEC0;
       }
+
       &:focus-visible {
         outline-color: white;
         outline-width: 0px;
