@@ -1,24 +1,26 @@
 
 
 <template>
-  <section class="container">
+  <section class="container" v-bind:class="{ visible: isVisible }">
     <section class="dropdown-wrapper">
       <div @click="isVisible = !isVisible" class="selected-item">
         <span v-if="selectedFruit">{{ selectedFruit }}</span>
         <span v-else>Select an item</span>
-        <Icon name="iconDown"></Icon>
+        <Icon v-if="isVisible" name="iconUp" class="icon-up"></Icon>
+        <Icon v-else name="iconDown" class="icon-down"></Icon>
       </div>
       <div v-if="isVisible" class="dropdown-open">
-        <Icon name="iconUp"></Icon>
-        <input type="text" v-model="searchQuery"  placeholder="This is a search input"/>
+        <input type="text" v-model="searchQuery" placeholder="This is a search input" />
         <div class="options">
           <ul>
-            <li @click="selectFruit()" v-for="(fruit, index) in filteredFruit" :key="`${index}`"> {{ fruit }}
+            <li @click="selectFruit(fruit)" v-for="(fruit, index) in filteredFruit" :key="`${index}`"> {{ fruit }}
             </li>
           </ul>
         </div>
       </div>
     </section>
+
+
   </section>
 </template>
 
@@ -34,6 +36,7 @@ export default {
       fruitsArray: [],
       searchQuery: '',
       selectedItem: null,
+      selectedFruit: null,
       isVisible: false,
     }
   },
@@ -46,7 +49,7 @@ export default {
   },
   methods: {
     selectFruit(fruit) {
-      this.selectedItem = fruit;
+      this.selectedFruit = fruit;
       this.isVisible = false;
     },
   },
@@ -72,6 +75,13 @@ export default {
   background-color: #EDF2F7;
 }
 
+section.container.visible {
+  width: 320px;
+  height: 320px;
+  left: 0;
+  background-color: #EDF2F7;
+}
+
 .dropdown-wrapper {
   max-width: 256px;
   height: 56px;
@@ -91,6 +101,10 @@ export default {
     font-weight: 400;
     color: #A0AEC0;
     box-shadow: 0px 10px 15px rgba(35, 78, 82, 0.1);
+
+    .icon-up {
+      z-index: 1;
+    }
   }
 
   .dropdown-open {
@@ -109,6 +123,7 @@ export default {
       font-size: 16px;
       padding-left: 8px;
       color: #A0AEC0;
+      padding-top: 10px;
 
       &::placeholder {
         color: #A0AEC0;
